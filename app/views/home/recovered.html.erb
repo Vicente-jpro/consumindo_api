@@ -1,2 +1,21 @@
-<h1>Home#recovered</h1>
-<p>Find me in app/views/home/recovered.html.erb</p>
+<h1>Recovered</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Country</th>
+      <th scope="col">City</th>
+      <th scope="col">recovered</th>
+      <th scope="col">Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @service.each do |actual_service| %>
+    <tr>
+      <td><%= actual_service['countryRegion']%></td>
+      <td><%= actual_service['provinceState'] %></td>
+      <td><%= actual_service['recovered']%></td>
+      <td><%= Time.at((actual_service['lastUpdate'].to_i/1000)).strftime('%H:%M:%S %d/%m/%Y')%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
